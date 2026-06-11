@@ -53,3 +53,4 @@ For the alerts panel, live 13F quarterly holdings filings are pulled from the SE
 - **Authentication**: JWT-based auth so each user sees a personalized alert feed
 - **Caching**: Cache yfinance responses (Redis or in-memory TTL) to avoid re-fetching on every page load
 - **More data sources**: Pull 13F position-level data to surface fund holdings changes, not just filing events
+# owl-fund-intelligence
