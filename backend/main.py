@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from routers import metrics, portfolio, allocation, alerts
 
 app = FastAPI(title="OWL Fund Intelligence API")
 
@@ -9,6 +10,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(metrics.router,    prefix="/api")
+app.include_router(portfolio.router,  prefix="/api")
+app.include_router(allocation.router, prefix="/api")
+app.include_router(alerts.router,     prefix="/api")
+
 
 @app.get("/health")
 def health():
