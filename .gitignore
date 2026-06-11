@@ -6,3 +6,5 @@ __pycache__/
 dist/
 backend/.env
 frontend/.env
+frontend/.env.production
+backend/.env.production
