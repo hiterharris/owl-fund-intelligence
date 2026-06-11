@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { MetricsResponse, PerformancePoint, AllocationItem, Alert } from '../types';
+import type { MetricsResponse, PerformancePoint, AllocationItem, Alert, FundDetail } from '../types';
 
 const api = axios.create({ baseURL: '/api' });
 
@@ -14,3 +14,9 @@ export const fetchStrategyAllocation = () =>
 
 export const fetchAlerts = () =>
   api.get<Alert[]>('/alerts').then((r) => r.data);
+
+export const fetchFunds = () =>
+  api.get<FundDetail[]>('/funds').then((r) => r.data);
+
+export const fetchFundsByStrategy = (strategy: string) =>
+  api.get<FundDetail[]>(`/strategy-allocation/${encodeURIComponent(strategy)}/funds`).then((r) => r.data);

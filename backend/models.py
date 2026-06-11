@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
 class MetricItem(BaseModel):
@@ -14,15 +15,34 @@ class MetricsResponse(BaseModel):
 
 
 class PerformancePoint(BaseModel):
-    date: str        # "YYYY-MM"
+    date: str         # "YYYY-MM"
     portfolio: float  # cumulative return as decimal, e.g. 0.125 = 12.5%
     benchmark: float
 
 
 class AllocationItem(BaseModel):
     name: str
-    value: int   # percentage, e.g. 32
-    color: str   # hex color
+    value: float          # percentage, e.g. 34.6
+    color: str            # hex color
+    aum_billions: Optional[float] = None
+    fund_count: Optional[int] = None
+
+
+class FundDetail(BaseModel):
+    id: str
+    name: str
+    ticker: str
+    strategy: str
+    aum_billions: float
+    color: str
+    description: str
+    manager: str
+    current_price: float
+    daily_change: float
+    ytd_return: float
+    monthly_return: float
+    week52_high: float
+    week52_low: float
 
 
 class Alert(BaseModel):

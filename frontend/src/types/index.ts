@@ -20,6 +20,25 @@ export interface AllocationItem {
   name: string;
   value: number;
   color: string;
+  aum_billions?: number;
+  fund_count?: number;
+}
+
+export interface FundDetail {
+  id: string;
+  name: string;
+  ticker: string;
+  strategy: string;
+  aum_billions: number;
+  color: string;
+  description: string;
+  manager: string;
+  current_price: number;
+  daily_change: number;
+  ytd_return: number;
+  monthly_return: number;
+  week52_high: number;
+  week52_low: number;
 }
 
 export interface Alert {

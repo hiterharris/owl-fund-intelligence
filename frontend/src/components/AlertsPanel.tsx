@@ -26,8 +26,13 @@ export default function AlertsPanel({ alerts, onMarkAllRead }: Props) {
         </button>
       </div>
 
-      {/* Alert list */}
-      <ul className="flex flex-col gap-3 overflow-y-auto">
+      {/* Alert count */}
+      {alerts.length > 0 && (
+        <p className="text-xs text-gray-400 mb-3">{alerts.length} alerts — scroll to view all</p>
+      )}
+
+      {/* Alert list — fixed height shows ~6 items, scrollable for the rest */}
+      <ul className="flex flex-col gap-3 overflow-y-auto" style={{ maxHeight: '30rem' }}>
         {alerts.length === 0 && (
           <li className="text-sm text-gray-400 text-center py-8">No alerts</li>
         )}

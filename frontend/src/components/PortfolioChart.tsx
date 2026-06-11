@@ -28,14 +28,14 @@ export default function PortfolioChart({ data }: Props) {
     <div className="bg-white rounded-xl border border-gray-200 p-5">
       <div className="mb-4">
         <h2 className="font-semibold text-gray-900">Portfolio Performance</h2>
-        <p className="text-xs text-gray-400">Cumulative returns vs. benchmark</p>
+        <p className="text-xs text-gray-400">Cumulative returns vs. blended benchmark (ACWI/AGG/GLD/HYG/VNQ)</p>
       </div>
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={formatted} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" />
           <XAxis dataKey="label" tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false} />
           <YAxis tickFormatter={formatPct} tick={{ fontSize: 11, fill: '#9CA3AF' }} axisLine={false} tickLine={false} width={48} />
-          <Tooltip formatter={(v: number) => formatPct(v)} />
+          <Tooltip formatter={(v) => formatPct(Number(v))} />
           <Legend iconType="plainline" wrapperStyle={{ fontSize: 12 }} />
           <Line
             type="monotone"
@@ -49,7 +49,7 @@ export default function PortfolioChart({ data }: Props) {
           <Line
             type="monotone"
             dataKey="benchmark"
-            name="Benchmark"
+            name="Blended Benchmark"
             stroke="#9CA3AF"
             strokeWidth={2}
             strokeDasharray="5 5"
