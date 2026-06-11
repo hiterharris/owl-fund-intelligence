@@ -1,0 +1,26 @@
+services:
+  # Python FastAPI backend
+  - type: web
+    name: owl-fund-api
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ALLOWED_ORIGINS
+        value: https://owl-fund-app.onrender.com  # update to your frontend URL after first deploy
+
+  # React/Vite frontend (static site)
+  - type: web
+    name: owl-fund-app
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://owl-fund-api.onrender.com  # update to your backend URL after first deploy
