@@ -79,10 +79,10 @@ export default function App() {
         />
       )}
 
-      <main className="p-6">
+      <main className="p-3 sm:p-6">
         {/* KPI Cards */}
         {metrics && (
-          <div className="grid grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
             <MetricCard
               label="Funds Monitored"
               {...metrics.funds_monitored}
@@ -101,8 +101,8 @@ export default function App() {
         )}
 
         {/* Charts + Alerts */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-2 flex flex-col gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 flex flex-col gap-4">
             <PortfolioChart data={performance} />
             <StrategyAllocation data={allocation} />
           </div>

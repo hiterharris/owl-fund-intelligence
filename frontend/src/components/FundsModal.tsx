@@ -60,7 +60,7 @@ export default function FundsModal({ funds, onClose }: Props) {
 
         {/* Table */}
         <div className="overflow-auto flex-1">
-          <table className="w-full text-sm">
+          <table className="w-full min-w-[720px] text-sm">
             <thead className="sticky top-0 bg-gray-50 border-b border-gray-100">
               <tr>
                 <th className="text-left px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wide">Fund</th>

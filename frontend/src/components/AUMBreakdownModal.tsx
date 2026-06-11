@@ -101,7 +101,7 @@ export default function AUMBreakdownModal({ allocation, funds, totalAUM, onClose
           {/* Per-fund AUM */}
           <div>
             <h3 className="text-sm font-semibold text-gray-700 mb-3">Individual Fund AUM</h3>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {funds.map((f) => (
                 <div key={f.id} className="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
                   <div className="flex items-center gap-2 min-w-0">

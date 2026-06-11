@@ -40,29 +40,29 @@ export default function YTDReturnModal({ funds, weightedYTD, onClose }: Props) {
         </div>
 
         {/* Summary strip */}
-        <div className="px-6 py-3 bg-gray-50 border-b border-gray-100 flex items-center gap-6">
+        <div className="px-4 sm:px-6 py-3 bg-gray-50 border-b border-gray-100 flex flex-wrap items-center gap-4 sm:gap-6">
           <div>
             <div className="text-xs text-gray-400 uppercase tracking-wide">Weighted Avg. YTD</div>
-            <div className={`text-2xl font-bold ${weightedYTD >= 0 ? 'text-green-600' : 'text-red-500'}`}>
+            <div className={`text-xl sm:text-2xl font-bold ${weightedYTD >= 0 ? 'text-green-600' : 'text-red-500'}`}>
               {weightedYTD >= 0 ? '+' : ''}{weightedYTD.toFixed(2)}%
             </div>
           </div>
-          <div className="h-10 w-px bg-gray-200" />
+          <div className="hidden sm:block h-10 w-px bg-gray-200" />
           <div>
             <div className="text-xs text-gray-400 uppercase tracking-wide">Funds</div>
-            <div className="text-2xl font-bold text-gray-900">{funds.length}</div>
+            <div className="text-xl sm:text-2xl font-bold text-gray-900">{funds.length}</div>
           </div>
-          <div className="h-10 w-px bg-gray-200" />
+          <div className="hidden sm:block h-10 w-px bg-gray-200" />
           <div>
             <div className="text-xs text-gray-400 uppercase tracking-wide">Positive</div>
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-xl sm:text-2xl font-bold text-green-600">
               {funds.filter((f) => f.ytd_return >= 0).length}
             </div>
           </div>
-          <div className="h-10 w-px bg-gray-200" />
+          <div className="hidden sm:block h-10 w-px bg-gray-200" />
           <div>
             <div className="text-xs text-gray-400 uppercase tracking-wide">Negative</div>
-            <div className="text-2xl font-bold text-red-500">
+            <div className="text-xl sm:text-2xl font-bold text-red-500">
               {funds.filter((f) => f.ytd_return < 0).length}
             </div>
           </div>
@@ -77,13 +77,13 @@ export default function YTDReturnModal({ funds, weightedYTD, onClose }: Props) {
             const pos = fund.ytd_return >= 0;
 
             return (
-              <div key={fund.id} className="flex items-center gap-4">
+              <div key={fund.id} className="flex items-center gap-3">
                 {/* Fund info */}
-                <div className="w-48 flex-shrink-0">
+                <div className="w-32 sm:w-48 flex-shrink-0">
                   <div className="flex items-center gap-2">
                     <div className="w-1.5 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: fund.color }} />
-                    <div>
-                      <div className="text-sm font-medium text-gray-900 leading-tight truncate w-36">{fund.name}</div>
+                    <div className="min-w-0">
+                      <div className="text-xs sm:text-sm font-medium text-gray-900 leading-tight truncate">{fund.name}</div>
                       <span className={`inline-block px-1.5 py-0.5 rounded-full text-[10px] font-medium mt-0.5 ${strategyColors[fund.strategy] ?? 'bg-gray-100 text-gray-700'}`}>
                         {fund.strategy}
                       </span>
@@ -92,20 +92,20 @@ export default function YTDReturnModal({ funds, weightedYTD, onClose }: Props) {
                 </div>
 
                 {/* Bar */}
-                <div className="flex-1 flex items-center gap-2">
+                <div className="flex-1 flex items-center gap-2 min-w-0">
                   <div className="flex-1 h-5 bg-gray-100 rounded-full overflow-hidden">
                     <div
                       className={`h-full rounded-full ${pos ? 'bg-green-400' : 'bg-red-400'}`}
                       style={{ width: `${barWidth}%` }}
                     />
                   </div>
-                  <span className={`text-sm font-semibold w-16 text-right ${pos ? 'text-green-600' : 'text-red-500'}`}>
+                  <span className={`text-xs sm:text-sm font-semibold w-14 sm:w-16 text-right flex-shrink-0 ${pos ? 'text-green-600' : 'text-red-500'}`}>
                     {pos ? '+' : ''}{fund.ytd_return.toFixed(2)}%
                   </span>
                 </div>
 
-                {/* Contribution */}
-                <div className="w-28 flex-shrink-0 text-right">
+                {/* Contribution — hidden on small screens */}
+                <div className="hidden sm:block w-28 flex-shrink-0 text-right">
                   <div className="text-xs text-gray-400">{(weight * 100).toFixed(1)}% weight</div>
                   <div className={`text-xs font-medium ${contribution >= 0 ? 'text-green-600' : 'text-red-500'}`}>
                     {contribution >= 0 ? '+' : ''}{contribution.toFixed(2)}% contrib.

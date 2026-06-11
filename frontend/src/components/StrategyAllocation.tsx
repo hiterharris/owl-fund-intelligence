@@ -54,7 +54,7 @@ export default function StrategyAllocation({ data }: Props) {
         <p className="text-xs text-gray-400">Click a strategy to see fund breakdown</p>
       </div>
 
-      <div className="flex items-center gap-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
         {/* Donut chart */}
         <div className="w-48 h-48 flex-shrink-0">
           <ResponsiveContainer width="100%" height="100%">
@@ -146,7 +146,7 @@ export default function StrategyAllocation({ data }: Props) {
                       <div className="text-xs text-gray-400">{fund.ticker} · {fund.manager}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6 flex-shrink-0 ml-4">
+                  <div className="flex items-center gap-3 sm:gap-6 flex-shrink-0 ml-2 sm:ml-4">
                     <div className="text-right">
                       <div className="text-xs text-gray-400">AUM</div>
                       <div className="text-sm font-semibold text-gray-900">${fund.aum_billions.toFixed(1)}B</div>
@@ -155,11 +155,11 @@ export default function StrategyAllocation({ data }: Props) {
                       <div className="text-xs text-gray-400">YTD</div>
                       <ReturnBadge value={fund.ytd_return} />
                     </div>
-                    <div className="text-right">
+                    <div className="hidden sm:block text-right">
                       <div className="text-xs text-gray-400">1-Mo</div>
                       <ReturnBadge value={fund.monthly_return} />
                     </div>
-                    <div className="text-right">
+                    <div className="hidden sm:block text-right">
                       <div className="text-xs text-gray-400">Price</div>
                       <div className="text-sm font-medium text-gray-700">${fund.current_price.toFixed(2)}</div>
                     </div>
